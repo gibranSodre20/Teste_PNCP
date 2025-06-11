@@ -15,8 +15,10 @@ endpoint = f"/v1/orgaos/{os.getenv("cnpj_treinamento")}/compras"
 usuario_git = os.getenv("usuario_git")
 repositorio = os.getenv("repositorio")
 url_json = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/refs/heads/master/Arquivos_Json/objetoCompra.json"
+url_documento = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/refs/heads/master/Arquivos_teste/Documento-teste-1.pdf"
 
 json_data = buscar_json.buscar_json_raw(url_json)
+documento = buscar_json.buscar_documento_raw(url_documento)
 
 headers = {
     "Authorization": f"Bearer {token}",
