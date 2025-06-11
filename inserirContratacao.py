@@ -17,8 +17,8 @@ token = conexao.get_token()
 endpoint = f"/v1/orgaos/{os.getenv("cnpj_treinamento")}/compras"
 json_data = "null"
 
-#usuario_git = os.getenv("usuario_git")
-#repositorio = os.getenv("repositorio")
+usuario_git = os.getenv("usuario_git")
+repositorio = os.getenv("repositorio")
 caminho_objetoCompra = os.getenv("caminho_objetoCompra")
 branch = os.getenv("branch")
 url_raw = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/refs/heads/master/Arquivos_Json/objetoCompra.json"
