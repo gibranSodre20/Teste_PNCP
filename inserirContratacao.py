@@ -6,7 +6,6 @@ import conexao
 import inserir_Item_Contratacao
 import buscar_json
 from datetime import datetime
-from io import BytesIO
 
 # Carrega variáveis do arquivo .env
 load_dotenv()
