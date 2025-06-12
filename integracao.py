@@ -2,7 +2,7 @@ import requests
 from typing import Optional, Dict, Any, Union
 
 BASE_URL = "https://treina.pncp.gov.br/api/pncp"
-print('Hello World!')
+
 response = None
 
 def executa_endpoint(endpoint, json_data, headers, files, possuiArquivos):
