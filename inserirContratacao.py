@@ -6,6 +6,7 @@ import conexao
 import inserir_Item_Contratacao
 import buscar_json
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 
 # Carrega variáveis do arquivo .env
@@ -33,8 +34,12 @@ try:
     #Gera e atribui o valor do "numeroCompra" com base na data,hora e minuto, tornando sempre um valor único
     if json_data:
         json_compra = json.loads(json.dumps(json_data, indent=4))
-        data_hora = f"{datetime.now()}"
+        data_hora = f"{datetime.now().strftime("%Y-%m-%dT%H:%M:%S")}"
         json_compra["numeroCompra"] = data_hora.replace("-", "").replace(":", "").replace(".", "").replace(" ", "")
+        json_compra["anoCompra"] = data_hora[0:4]
+        json_compra["dataAberturaProposta"] = data_hora
+        data_somada = datetime.now() + relativedelta(months=2)
+        json_compra["dataEncerramentoProposta"] = f"{data_somada.strftime("%Y-%m-%dT%H:%M:%S")}"
         files = {
             "compra": ("objetoCompra.json", json.dumps(json_compra, indent=4), "application/json"),
             "documento": ("Documento-teste-1.pdf", open(r"D:\Teste_PNCP\Arquivos_teste\Documento_teste_1.pdf", "rb"), "application/pdf")
