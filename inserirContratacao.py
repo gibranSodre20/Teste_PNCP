@@ -17,8 +17,7 @@ endpoint = f"/v1/orgaos/{os.getenv("cnpj_treinamento")}/compras"
 usuario_git = os.getenv("usuario_git")
 repositorio = os.getenv("repositorio")
 url_json = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/refs/heads/main/Arquivos_Json/objetoCompra.json"
-#url_documento = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/master/Arquivos_teste/Documento_teste_1.pdf"
- 
+caminho_arquivo_compra = os.getenv("caminho_arquivo_compra")
 
 json_data = buscar_json.buscar_json_raw(url_json)
 #documento = buscar_json.buscar_documento_raw(url_documento)
@@ -42,7 +41,7 @@ try:
         json_compra["dataEncerramentoProposta"] = f"{data_somada.strftime("%Y-%m-%dT%H:%M:%S")}"
         files = {
             "compra": ("objetoCompra.json", json.dumps(json_compra, indent=4), "application/json"),
-            "documento": ("Documento-teste-1.pdf", open(r"D:\Teste_PNCP\Arquivos_teste\Documento_teste_1.pdf", "rb"), "application/pdf")
+            "documento": ("Documento-teste-1.pdf", open(rf"{caminho_arquivo_compra}", "rb"), "application/pdf")
                 }
         # Envia a requisição POST
         response = integracao.executa_endpoint(endpoint, json.dumps(json_compra, indent=4), headers, files, True)
