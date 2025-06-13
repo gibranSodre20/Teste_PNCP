@@ -1,0 +1,21 @@
+{
+  "anoPca": 2026,
+  "codigoUnidade": "45001",
+  "itensPlano": [
+    { "catalogo": 2,
+      "categoriaItemPca": 2,
+      "classificacaoCatalogo": 2,
+      "classificacaoSuperiorCodigo": "2",
+      "classificacaoSuperiorNome": "serviÃ§o de certificaÃ§Ã£o digital",
+      "dataDesejada": "2026-01-18",
+      "numeroItem": 1,
+      "quantidade": 5,
+      "unidadeFornecimento": "serv",
+      "valorOrcamentoExercicio": 2000,
+      "valorTotal": 1500,
+      "valorUnitario": 300,
+      "unidadeRequisitante": "Secretaria Geral",
+      "grupoContratacaoNome": "PrestaÃ§Ã£o de serviÃ§o para certificaÃ§Ã£o digital"    
+    }
+  ]
+}
