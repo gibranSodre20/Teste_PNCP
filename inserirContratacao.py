@@ -45,15 +45,16 @@ try:
                 }
         # Envia a requisição POST
         response = integracao.executa_endpoint(endpoint, json.dumps(json_compra, indent=4), headers, files, True)
-        #Criar Json
-        dados = response.json()
-        # Acessa o valor do campo "path"
-        caminho = dados["compraUri"]
-        #fatiar string pelo separador "/" e pegar o valor do ano e o sequencial
-        valores = caminho.split("/")
-        ano = caminho.split("/")[8]
-        sequencial = caminho.split("/")[9]
+       
         if response.status_code == 201:
+             #Criar Json
+            dados = response.json()
+            # Acessa o valor do campo "path"
+            caminho = dados["compraUri"]
+            #fatiar string pelo separador "/" e pegar o valor do ano e o sequencial
+            valores = caminho.split("/")
+            ano = valores[8]
+            sequencial = valores[9]
             inserir_Item_Contratacao.inserirItensContratacao(ano, sequencial)
 
     else:
