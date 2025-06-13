@@ -12,6 +12,7 @@ from dateutil.relativedelta import relativedelta
 # Carrega variáveis do arquivo .env
 load_dotenv()
 
+print("Hello world")
 token = conexao.get_token()
 endpoint = f"/v1/orgaos/{os.getenv("cnpj_treinamento")}/compras"
 usuario_git = os.getenv("usuario_git")
