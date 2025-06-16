@@ -19,7 +19,7 @@ def InserirPlanoContratacao():
     endpoint = f"/v1/orgaos/{cnpj}/pca"
     url_json = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/refs/heads/main/Arquivos_Json/InserirPCA.json"
     json_pca = buscar_json.buscar_json_raw(url_json)
-    data_hora = datetime.now()
+    #data_hora = datetime.now()
     json_pca["anoPca"] = ano
     json_pca["itensPlano"][0]["dataDesejada"] = f"{ano}-07-07"
     headers = {
