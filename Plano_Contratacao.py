@@ -15,12 +15,13 @@ repositorio = os.getenv("repositorio")
 
 
 def InserirPlanoContratacao():
+    ano = input("Informe o ano do PCA")
     endpoint = f"/v1/orgaos/{cnpj}/pca"
     url_json = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/refs/heads/main/Arquivos_Json/InserirPCA.json"
     json_pca = buscar_json.buscar_json_raw(url_json)
     data_hora = datetime.now()
-    json_pca["anoPca"] = input("Informe o ano do PCA")
-    json_pca["dataDesejada"] = input("Informe a data desejada no formato YYYY-MM-DD")   #data_hora.replace("-", "").replace(":", "").replace(".", "").replace(" ", "")
+    json_pca["anoPca"] = ano
+    json_pca["itensPlano"][0]["dataDesejada"] = f"{ano}-07-07"
     headers = {
         "Authorization": f"Bearer {token}",
         "Accept": "*/*",

@@ -33,14 +33,5 @@ def inserirItensContratacao(ano, sequencial):
     if response:
         print("Status Code:", response.status_code)
         print("Response Body:", response.text)
-    """#Criar Json
-        dados = response.json()
-    # Acessa o valor do campo "path"
-        caminho = dados["path"]
-    #fatiar string pelo separador "/" e pegar o valor do ano e o sequencial
-        ano = caminho.split("/")[6]
-        sequencial = caminho.split("/")[7]
-        print("ano: " + ano)
-        print("sequencial: " + sequencial)
-"""
+
 
