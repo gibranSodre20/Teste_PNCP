@@ -1,10 +1,10 @@
-import integracao
+import Integracao
 import json
 from dotenv import load_dotenv
 import os
-import conexao
-import inserir_Item_Contratacao
-import buscar_json
+import Conexao
+import Inserir_Item_Contratacao
+import Buscar_json
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import InserirAta 
@@ -14,14 +14,14 @@ import InserirAta
 load_dotenv()
 
 print("Hello world")
-token = conexao.get_token()
+token = Conexao.get_token()
 endpoint = f"/v1/orgaos/{os.getenv("cnpj_treinamento")}/compras"
 usuario_git = os.getenv("usuario_git")
 repositorio = os.getenv("repositorio")
 url_json = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/refs/heads/main/Arquivos_Json/objetoCompra.json"
 caminho_arquivo_compra = os.getenv("caminho_arquivo_compra")
 
-json_data = buscar_json.buscar_json_raw(url_json)
+json_data = Buscar_json.buscar_json_raw(url_json)
 #documento = buscar_json.buscar_documento_raw(url_documento)
 
 headers = {
@@ -46,7 +46,7 @@ try:
             "documento": ("Documento-teste-1.pdf", open(rf"{caminho_arquivo_compra}", "rb"), "application/pdf")
                 }
         # Envia a requisição POST
-        response = integracao.executa_endpoint(endpoint, json.dumps(json_compra, indent=4), headers, files, True)
+        response = Integracao.executa_endpoint(endpoint, json.dumps(json_compra, indent=4), headers, files, True)
       
         if response.status_code == 201:
               #Criar Json
@@ -57,9 +57,9 @@ try:
             valores = caminho.split("/")
             ano = caminho.split("/")[8]
             sequencial = caminho.split("/")[9]
-            response = inserir_Item_Contratacao.inserirItensContratacao(ano, sequencial)
+            response = Inserir_Item_Contratacao.inserirItensContratacao(ano, sequencial)
             if response: 
-                response = InserirAta.InserirAta(ano, sequencial)
+                response = InserirAta.inserirAta(ano, sequencial)
                 print("Status Code:", response.status_code)
 
     else:

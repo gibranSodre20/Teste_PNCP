@@ -28,14 +28,4 @@ def buscar_documento_raw(url_documento):
     else:
         print(f"Erro ao baixar o arquivo: {response.status_code}")
     
-    """
-    if response.status_code == 200:
-    data = response.json()
-    pdf_files = [item['path'] for item in data['tree'] if item['path'].endswith('.pdf')]
-    
-    print("Arquivos PDF encontrados:")
-    for pdf in pdf_files:
-        print(f"https://github.com/{owner}/{repo}/blob/{branch}/{pdf}")
-else:
-    print(f"Erro ao acessar o repositório: {response.status_code}")
-    """
+  

@@ -1,11 +1,10 @@
-import integracao
-import json
-import conexao
+import Integracao
+import Conexao
 
 #Inserir termo
 endpoint = "/v1/orgaos/49238155000150/contratos/2025/4/termos"
 json_data = "null"
-token = conexao.getToken()
+token = Conexao.getToken()
 files = "" #Não deve ser passado nada para inserir termos
 
 # Lê o conteúdo do arquivo JSON
@@ -21,7 +20,7 @@ headers = {
     
 # Envia a requisição POST endpoint, json_data, headers, files, inserirContratacao
 #response = requests.post(url, headers=headers, data=json_data, verify=False)  # verify=False ignora o SSL
-response = integracao.executaEndPoint(endpoint, json_data, headers, files, False)
+response = Integracao.executaEndPoint(endpoint, json_data, headers, files, False)
 # Exibe a resposta
 print("Status Code:", response.status_code)
 print("Response Body:", response.text)

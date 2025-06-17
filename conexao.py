@@ -14,12 +14,7 @@ SENHA = os.getenv("senhaSwagger")
 DEBUG_MODE = os.getenv("DEBUG_MODE", "false").lower() == "true"
 
 def get_token() -> str | None:
-    """
-    Realiza a autenticação na API do PNCP e retorna o token de autorização.
-    
-    Returns:
-        str | None: Token de autenticação se bem-sucedido, ou None em caso de erro.
-    """
+  
     if not LOGIN or not SENHA:
         if DEBUG_MODE:
             print("[ERRO] Variáveis de ambiente 'login' ou 'senhaSwagger' não estão definidas.")

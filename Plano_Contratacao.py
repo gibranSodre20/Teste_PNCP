@@ -14,7 +14,7 @@ usuario_git = os.getenv("usuario_git")
 repositorio = os.getenv("repositorio") 
 
 
-def InserirPlanoContratacao():
+def inserirPlanoContratacao():
     ano = input("Informe o ano do PCA")
     endpoint = f"/v1/orgaos/{cnpj}/pca"
     url_json = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/refs/heads/main/Arquivos_Json/InserirPCA.json"
