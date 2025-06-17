@@ -61,7 +61,6 @@ try:
             if response: 
                 response = InserirAta.InserirAta(ano, sequencial)
                 print("Status Code:", response.status_code)
-                print("Response Body:", response.text)
 
     else:
         print("Não foi possível obter o arquivo JSON.")

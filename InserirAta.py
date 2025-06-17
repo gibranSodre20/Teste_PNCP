@@ -25,7 +25,7 @@ def InserirAta(anoCompra, sequencialCompra):
     json_ata["anoAta"] = anoCompra
     json_ata["dataAssinatura"] = f"{anoCompra}-07-21" 
     json_ata["dataVigenciaInicio"] = f"{anoCompra}-07-21" 
-    json_ata["dataVigenciaFim"] = f"{anoCompra + 1}-07-21"
+    json_ata["dataVigenciaFim"] = f"{int(anoCompra) + 1}-07-21"
 
     headers = {
         "Authorization": f"Bearer {token}",
@@ -33,7 +33,5 @@ def InserirAta(anoCompra, sequencialCompra):
         "Content-Type": "application/json"
         }
     response = integracao.executa_endpoint(endpoint, json.dumps(json_ata, indent=4), headers, files, False)
-
-    if response:
-        print("Status Code: ", response.status_code)
-        print("Response Body: ", response.text)
+    return response
+    
