@@ -7,6 +7,7 @@ import inserir_Item_Contratacao
 import buscar_json
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import InserirAta 
 
 
 # Carrega variáveis do arquivo .env
@@ -56,7 +57,11 @@ try:
             valores = caminho.split("/")
             ano = caminho.split("/")[8]
             sequencial = caminho.split("/")[9]
-            inserir_Item_Contratacao.inserirItensContratacao(ano, sequencial)
+            response = inserir_Item_Contratacao.inserirItensContratacao(ano, sequencial)
+            if response: 
+                response = InserirAta.InserirAta(ano, sequencial)
+                print("Status Code:", response.status_code)
+                print("Response Body:", response.text)
 
     else:
         print("Não foi possível obter o arquivo JSON.")

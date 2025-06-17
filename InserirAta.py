@@ -20,9 +20,12 @@ def InserirAta(anoCompra, sequencialCompra):
 
     url_json = f"https://raw.githubusercontent.com/{usuario_git}/{repositorio}/refs/heads/main/Arquivos_Json/InserirAta.json"
     json_ata = buscar_json.buscar_json_raw(url_json)
-    data_hora = datetime.now()
-    json_ata = ["numeroAtaRegistroPreco"] = data_hora[0:4]
+    data_hora = f"{datetime.now().strftime("%Y-%m-%dT%H:%M:%S")}"
+    json_ata["numeroAtaRegistroPreco"] = data_hora.replace("-", "").replace(":", "").replace(".", "").replace(" ", "")
     json_ata["anoAta"] = anoCompra
+    json_ata["dataAssinatura"] = f"{anoCompra}-07-21" 
+    json_ata["dataVigenciaInicio"] = f"{anoCompra}-07-21" 
+    json_ata["dataVigenciaFim"] = f"{anoCompra + 1}-07-21"
 
     headers = {
         "Authorization": f"Bearer {token}",

@@ -30,8 +30,7 @@ def inserirItensContratacao(ano, sequencial):
     #response = requests.post(url, headers=headers, data=json_data, verify=False)  # verify=False ignora o SSL
     response = integracao.executa_endpoint(endpoint, json.dumps(json_data, indent=4), headers, files, False)
 # Exibe a resposta
-    if response:
-        print("Status Code:", response.status_code)
-        print("Response Body:", response.text)
+    
+    return response
 
 
